@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tieto.mappers.CityMapper;
@@ -47,5 +49,12 @@ public class CityController {
 		List<City> cities = cityService.findAllCities();
 
 		return cityMapper.mapDTO(cities);
+	}
+	
+	@PostMapping("/api/weather/cities")
+	public CityDTO createCity(@RequestBody CityDTO city) {
+		City c = cityService.createCity(cityMapper.mapDO(city));
+
+		return cityMapper.mapDTO(c);
 	}
 }

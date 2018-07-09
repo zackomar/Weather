@@ -33,4 +33,36 @@ public class CityServiceImpl implements CityService {
 	public List<City> findAllCities() {
 		return WeatherLoader.weather;
 	}
+
+	@Override
+	public City createCity(City city) {
+		if (city == null) {
+			throw new IllegalArgumentException("City can not be null.");
+		}
+
+		if (checkIfCityExists(city.getName())) {
+			throw new IllegalArgumentException("City with given name already exists.");
+		}
+
+		WeatherLoader.weather.add(city);
+
+		return city;
+	}
+
+	/**
+	 * Checks if city with given name already exists.
+	 * 
+	 * @param city
+	 *            {@link String}
+	 * @return true if city already exists
+	 */
+	private Boolean checkIfCityExists(String city) {
+		for (City c : WeatherLoader.weather) {
+			if (city.equals(c.getName())) {
+				return true;
+			}
+		}
+
+		return false;
+	}
 }
