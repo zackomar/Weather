@@ -40,4 +40,8 @@ public class MaxTemperatureMapper {
 	public List<MaxTemperatureDTO> mapDTO(List<MaxTemperature> source) {
 		return source == null ? new ArrayList<>() : source.stream().map(this::mapDTO).collect(Collectors.toList());
 	}
+	
+	public List<MaxTemperature> mapDO(List<MaxTemperatureDTO> source) {
+		return source == null ? new ArrayList<>() : source.stream().map(this::mapDO).collect(Collectors.toList());
+	}
 }

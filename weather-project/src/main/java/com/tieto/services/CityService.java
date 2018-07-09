@@ -6,6 +6,7 @@ import com.tieto.models.City;
 import com.tieto.models.MaxTemperature;
 
 public interface CityService {
+
 	/**
 	 * Fetch all {@link MaxTemperature} for {@link City} with given name if city
 	 * exists.
@@ -31,4 +32,23 @@ public interface CityService {
 	 * @return newly created {@link City} if city was created.
 	 */
 	City createCity(City city);
+
+	/**
+	 * Adding new {@link MaxTemperature} to given city.
+	 * 
+	 * @param city
+	 * @param temperature
+	 * @return saved city with new temperature
+	 */
+	City addTemperatureToCity(String city, MaxTemperature temperature);
+	
+	/**
+	 * Adding new {@link List} of {@link MaxTemperature} to given city.
+	 * 
+	 * @param city
+	 * @param temperatures
+	 * @return saved city with new temperatures
+	 */
+	City addTemperaturesToCity(String city, List<MaxTemperature> temperatures);
+
 }
