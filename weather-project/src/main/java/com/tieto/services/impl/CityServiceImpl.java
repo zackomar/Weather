@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.tieto.configs.WeatherLoader;
+import com.tieto.exceptions.CityNotFoundException;
 import com.tieto.models.City;
 import com.tieto.models.MaxTemperature;
 import com.tieto.services.CityService;
@@ -28,7 +29,7 @@ public class CityServiceImpl implements CityService {
 				return c.getTemperatures();
 			}
 		}
-		throw new IllegalArgumentException("City does not exists.");
+		throw new CityNotFoundException("City does not exists.");
 	}
 
 	@Override
@@ -141,6 +142,6 @@ public class CityServiceImpl implements CityService {
 				return c;
 			}
 		}
-		throw new IllegalArgumentException("City does not exists.");
+		throw new CityNotFoundException("City does not exists.");
 	}
 }
